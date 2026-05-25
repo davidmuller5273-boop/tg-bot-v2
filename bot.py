@@ -1,4 +1,5 @@
 import logging
+from telegram import Bot
 from telegram.ext import Updater, CommandHandler, MessageHandler, filters
 
 TOKEN = "8542666311:AAGGhu__zarnnKJD0s8irEKd_wFIbEpWOdA"
@@ -11,7 +12,8 @@ def echo(update, context):
 
 def main():
     logging.basicConfig(level=logging.INFO)
-    updater = Updater(token=TOKEN, use_context=True)
+    bot = Bot(token=TOKEN)
+    updater = Updater(bot=bot, use_context=True)
     dp = updater.dispatcher
     
     dp.add_handler(CommandHandler("start", start))
